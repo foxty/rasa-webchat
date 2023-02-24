@@ -1,7 +1,7 @@
 import { Map, fromJS } from 'immutable';
 import { MESSAGES_TYPES, MESSAGE_SENDER, SESSION_NAME } from 'constants';
 
-import { Video, Image, Message, Carousel, Buttons } from 'messagesComponents';
+import { Video, Image, Message, Carousel, Buttons, Snippet } from 'messagesComponents';
 
 export function createNewMessage(text, sender, nextMessageIsTooltip, hidden) {
   return Map({
@@ -47,6 +47,18 @@ export function createImageSnippet(image, sender) {
     sender,
     showAvatar: true,
     timestamp: new Date().getTime()
+  });
+}
+
+export function createXtermMessage(content, sender, nextMessageIsTooltip, hidden) {
+  return Map({
+    type: MESSAGES_TYPES.XTERM,
+    content,
+    sender,
+    showAvatar: sender === MESSAGE_SENDER.RESPONSE,
+    timestamp: new Date().getTime(),
+    nextMessageIsTooltip,
+    hidden
   });
 }
 

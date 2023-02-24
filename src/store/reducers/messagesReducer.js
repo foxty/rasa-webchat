@@ -9,7 +9,8 @@ import {
   createImageSnippet,
   createComponentMessage,
   storeMessageTo,
-  getLocalSession
+  getLocalSession,
+  createXtermMessage
 } from './helper';
 
 import * as actionTypes from '../actions/actionTypes';
@@ -47,6 +48,9 @@ export default function (storage) {
       }
       case actionTypes.ADD_NEW_IMAGE_IMGREPLY: {
         return storeMessage(state.push(createImageSnippet(action.image, MESSAGE_SENDER.RESPONSE)));
+      }
+      case actionTypes.ADD_NEW_XTERM_REPLY: {
+        return storeMessage(state.push(createXtermMessage(action.content, MESSAGE_SENDER.RESPONSE)));
       }
       case actionTypes.ADD_BUTTONS: {
         return storeMessage(state.push(createButtons(action.buttons, MESSAGE_SENDER.RESPONSE)));

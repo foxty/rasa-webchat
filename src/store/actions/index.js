@@ -117,6 +117,13 @@ export function addImageSnippet(image) {
   };
 }
 
+export function addXtermSnippet(content) {
+  return {
+    type: actions.ADD_NEW_XTERM_REPLY,
+    content
+  };
+}
+
 export function addButtons(buttons) {
   return {
     type: actions.ADD_BUTTONS,

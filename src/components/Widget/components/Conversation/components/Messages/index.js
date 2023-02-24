@@ -8,6 +8,7 @@ import { Video, Image, Message, Carousel, Buttons } from 'messagesComponents';
 
 import './styles.scss';
 import ThemeContext from '../../../../ThemeContext';
+import { Snippet, Xterm } from './components';
 
 const isToday = (date) => {
   const today = new Date();
@@ -53,6 +54,9 @@ class Messages extends Component {
         }
         case MESSAGES_TYPES.IMGREPLY.IMAGE: {
           return Image;
+        }
+        case MESSAGES_TYPES.XTERM: {
+          return Xterm;
         }
         case MESSAGES_TYPES.BUTTONS: {
           return Buttons;

@@ -5,6 +5,8 @@ import './styles.scss';
 
 class Snippet extends PureComponent {
   render() {
+    console.log(`snippet get props`, this.props)
+
     return (
       <div className="rw-snippet">
         <b className="rw-snippet-title">

@@ -17,6 +17,7 @@ export const MESSAGES_TYPES = {
   IMGREPLY: {
     IMAGE: 'imgreply'
   },
+  XTERM: "xterm",
   BUTTONS: 'buttons',
   CUSTOM_COMPONENT: 'component'
 };
@@ -43,7 +44,8 @@ export const PROP_TYPES = {
       MESSAGES_TYPES.BUTTONS,
       MESSAGES_TYPES.CAROUSEL,
       MESSAGES_TYPES.IMGREPLY.IMAGE,
-      MESSAGES_TYPES.VIDREPLY.VIDEO
+      MESSAGES_TYPES.VIDREPLY.VIDEO,
+      MESSAGE_SENDER.XTERM,
     ]),
     id: PropTypes.number,
     text: PropTypes.string,
@@ -100,6 +102,16 @@ export const PROP_TYPES = {
     toggleInputDisabled: PropTypes.func,
     inputState: PropTypes.bool,
     chosenReply: PropTypes.string
-  })
+  }),
+
+  XTERM: ImmutablePropTypes.contains({
+    type: PropTypes.oneOf([
+      MESSAGES_TYPES.XTERM
+    ]),
+    id: PropTypes.number,
+    content: PropTypes.string,
+    url: PropTypes.url,
+    sender: senderType
+  }),
 
 };

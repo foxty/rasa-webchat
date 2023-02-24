@@ -35,9 +35,10 @@ import {
 } from 'actions';
 import { safeQuerySelectorAll } from 'utils/dom';
 import { SESSION_NAME, NEXT_MESSAGE } from 'constants';
-import { isVideo, isImage, isButtons, isText, isCarousel } from './msgProcessor';
+import { isVideo, isImage, isButtons, isText, isCarousel, isXTermContent } from './msgProcessor';
 import WidgetLayout from './layout';
 import { storeLocalSession, getLocalSession } from '../../store/reducers/helper';
+import { addXtermSnippet } from '../../store/actions';
 
 class Widget extends Component {
   constructor(props) {
@@ -557,6 +558,12 @@ class Widget extends Component {
           title: element.title,
           image: element.src
         })
+      );
+    } else if (isXTermContent(messageClean)) {
+      const element = messageClean.attachment.payload;
+      console.log(`Get xterm content`, element)
+      this.props.dispatch(
+        addXtermSnippet(element)
       );
     } else {
       // some custom message
